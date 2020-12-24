@@ -1,6 +1,6 @@
 FROM mysql:8.0
 
-ENV MYSQL_DATABASE=azatora_db \
+ENV MYSQL_DATABASE=local_azatora_db \
   MYSQL_USER=azatora \
   MYSQL_PASSWORD=azatora \
   MYSQL_ROOT_PASSWORD=root \
