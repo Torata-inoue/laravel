@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 
         <!-- Styles -->
+        <link rel="stylesheet" href="./css/style.css">
         <style>
             html, body {
                 background-color: #fff;
@@ -64,6 +65,13 @@
         </style>
     </head>
     <body>
+      <div class="test">
+        test
+        <p class="test__tester">
+          tester
+          <a href="#" class="test__tester--testest">testest</a>
+        </p>
+      </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
