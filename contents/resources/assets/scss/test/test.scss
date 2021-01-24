@@ -1,0 +1,14 @@
+.test{
+  font-size: 16px;
+  color: black;
+
+  &__tester {
+    font-size: 32px;
+    color: green;
+
+    &--testest {
+      font-size: 64px;
+      color: red;
+    }
+  }
+}
