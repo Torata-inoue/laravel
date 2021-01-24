@@ -12,7 +12,7 @@ services:
     ports:
       - 10080:80
     volumes:
-      - ./contents:/contents
+      - ./contents:/home/azatora/contents
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
 
   mysql:
@@ -22,7 +22,7 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: azatora_db
+      MYSQL_DATABASE: local_azatora_db
       MYSQL_USER: azatora
       MYSQL_PASSWORD: azatora
     volumes:
