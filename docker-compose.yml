@@ -2,27 +2,24 @@ version: "3.7"
 services:
   app:
     build: ./docker/php
-    image: azatora_app
     volumes:
-      - ./contents:/contents
+      - ./contents:/home/contents
 
   web:
     build: ./docker/nginx
-    image: nginx
     ports:
       - 10080:80
     volumes:
-      - ./contents:/home/azatora/contents
+      - ./contents:/home/contents
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
 
   mysql:
     build: ./docker/mysql
-    image: mysql
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: local_azatora_db
+      MYSQL_DATABASE: azatora_db
       MYSQL_USER: azatora
       MYSQL_PASSWORD: azatora
     volumes:
