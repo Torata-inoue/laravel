@@ -18,9 +18,8 @@ RUN apt-get update && \
     unzip locales && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
-  docker-php-ext-install intl pdo_mysql zip bcmath && \
   docker-php-ext-configure gd --with-freetype --with-jpeg && \
-  docker-php-ext-install intl gd zip bcmath
+  docker-php-ext-install intl gd pdo_mysql zip bcmath
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 
