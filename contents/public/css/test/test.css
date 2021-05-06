@@ -2,14 +2,11 @@
   font-size: 16px;
   color: black;
 }
-
 .test__tester {
   font-size: 32px;
   color: green;
 }
-
 .test__tester--testest {
   font-size: 64px;
   color: red;
 }
-
