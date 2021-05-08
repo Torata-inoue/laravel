@@ -25,7 +25,7 @@ const List = ({item}) => {
         }
     }
     return (
-        <li className="list__contents--item"　onClick={pickUser} data-id={item.id} style={{display: item.display}}>
+        <li className="list__contents--item"　onClick={pickUser} data-id={item.id} style={{display: item.display || 'list-item'}}>
             <div className="list__contents--label">
                 <img className="list__contents--icon" src={item.icon} alt=""/>
                 <span className="list__contents--text">{item.name}</span>

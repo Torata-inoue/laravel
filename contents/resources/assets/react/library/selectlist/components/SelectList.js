@@ -12,7 +12,6 @@ import Lists from './Lists';
  * @constructor
  */
 const SelectList = ({state, dispatch, options, setSelectedUser}) => {
-
     const toggle = () => {
         const contents = document.querySelector('.list__contents');
         contents.style.display = contents.style.display === 'block' ? 'none' : 'block';

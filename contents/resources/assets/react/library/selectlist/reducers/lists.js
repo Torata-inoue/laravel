@@ -14,9 +14,7 @@ const lists = (state, action) => {
 
         case SUGGEST_ITEMS:
             return state.map(item => {
-                if (!item.name.includes(action.input)) {
-                    item.display = 'none';
-                }
+                item.display = item.name.includes(action.input) ? 'list-item' : 'none';
                 return item;
             });
 
