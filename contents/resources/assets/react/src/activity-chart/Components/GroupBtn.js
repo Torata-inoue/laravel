@@ -1,6 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import AppContext from '../contexts/AppContext';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import useEffectCustom from '../hooks/useEffectCustom';
 
 const GroupBtn = () => {
@@ -9,10 +11,10 @@ const GroupBtn = () => {
     useEffectCustom(() => request(3), [groupBy]);
 
     return (
-        <>
-            <button type="button" onClick={() => setGroupBy('week')}>週</button>
-            <button type="button" onClick={() => setGroupBy('month')}>月</button>
-        </>
+        <div className="btn-group mx-2">
+            <button className="btn btn-outline-dark" type="button" onClick={() => setGroupBy('week')}>週</button>
+            <button className="btn btn-outline-dark" type="button" onClick={() => setGroupBy('month')}>月</button>
+        </div>
     )
 }
 

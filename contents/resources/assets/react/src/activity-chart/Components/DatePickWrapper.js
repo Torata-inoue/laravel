@@ -25,6 +25,7 @@ const DatePickWrapper = () => {
                 endDate={endDate}
                 dateFormat="yyyy/MM"
                 showMonthYearPicker
+                className="form-control"
             />
             <DatePicker
                 selected={endDate}
@@ -34,9 +35,10 @@ const DatePickWrapper = () => {
                 endDate={endDate}
                 dateFormat="yyyy/MM"
                 showMonthYearPicker
+                className="form-control"
             />
         </>
     )
-}
+};
 
 export default DatePickWrapper;

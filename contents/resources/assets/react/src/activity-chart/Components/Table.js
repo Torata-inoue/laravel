@@ -1,9 +1,11 @@
 import React from 'react';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Table = ({chartData}) => {
     return (
         <div>
-            <table className="table table-border">
+            <table className="table table-hover">
                 <thead>
                 <tr>
                     <td>期間</td>

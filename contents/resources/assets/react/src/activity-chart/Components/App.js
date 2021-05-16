@@ -7,12 +7,13 @@ import UserList from './UserList';
 import GroupBtn from './GroupBtn';
 import Table from './Table';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import axios from "axios";
 
 const App = ({users, endpoint}) => {
 
     const request = (pattern) => {
-        console.log('called' + pattern);
         let json;
         switch (pattern) {
             case 1:
@@ -47,8 +48,10 @@ const App = ({users, endpoint}) => {
     return (
         <AppContext.Provider value={{request}}>
             <UserList users={users}/>
-            <GroupBtn />
-            <DatePickWrapper />
+            <div className="d-flex justify-content-end">
+                <GroupBtn />
+                <DatePickWrapper />
+            </div>
             <ChartWrapper chartData={chartData}/>
             <Table chartData={chartData}/>
         </AppContext.Provider>
