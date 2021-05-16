@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import {Line} from 'react-chartjs-2';
 
-import useEffectCustom from '../hooks/useEffectCustom';
-
 const ChartWrapper = ({chartData}) => {
     const [chart, setChart] = useState({
         data: {},
@@ -19,31 +17,50 @@ const ChartWrapper = ({chartData}) => {
                         label: 'コメント',
                         data: chartData.comments,
                         fill: false,
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgba(255, 99, 132, 0.2)',
+                        backgroundColor: 'rgb(255, 157, 131)',
+                        borderColor: 'rgba(255, 157, 133)',
+                        yAxisID: 'y1'
                     },
                     {
                         label: 'ログイン',
                         data: chartData.logins,
                         fill: false,
-                        backgroundColor: 'rgb(54, 162, 235)',
-                        borderColor: 'rgba(54, 162, 235, 0.2)',
+                        backgroundColor: 'rgb(255, 217, 118)',
+                        borderColor: 'rgba(255, 217, 118)',
+                        yAxisID: 'y1'
                     },
                     {
                         label: 'リアクション',
                         data: chartData.reactions,
                         fill: false,
-                        backgroundColor: 'rgb(0, 0, 0)',
-                        borderColor: 'rgba(0, 0, 0, 0.2)',
+                        backgroundColor: 'rgb(146, 199, 255)',
+                        borderColor: 'rgba(146, 199, 255)',
+                        yAxisID: 'y2'
                     },
                 ],
             },
-            options: {}
+            options: {
+                scales: {
+                    y1: {
+                        title: {
+                            display: true,
+                            text: 'コメント/ログイン'
+                        }
+                    },
+                    y2: {
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'リアクション'
+                        }
+                    }
+                }
+            }
         });
     }, [chartData]);
 
     return (
-        <Line data={chart.data} options={chart.options} />
+        <Line data={chart.data} options={chart.options}  type="line"/>
     );
 };
 

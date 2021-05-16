@@ -12,8 +12,8 @@ const GroupBtn = () => {
 
     return (
         <div className="btn-group mx-2">
-            <button className="btn btn-outline-dark" type="button" onClick={() => setGroupBy('week')}>週</button>
-            <button className="btn btn-outline-dark" type="button" onClick={() => setGroupBy('month')}>月</button>
+            <button className="btn btn-secondary" type="button" onClick={() => setGroupBy('week')}>週</button>
+            <button className="btn btn-secondary" type="button" onClick={() => setGroupBy('month')}>月</button>
         </div>
     )
 }
