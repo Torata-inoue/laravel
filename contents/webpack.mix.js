@@ -36,12 +36,12 @@ glob.sync(assets_path + '/js/**/*.js').map(function (file) {
 /**
  * reactコンパイル
  */
-glob.sync(assets_path + '/react/**/index.js',
-    {ignore: assets_path + '/react/library/**/*.js'}).map(function (file) {
+glob.sync(assets_path + '/react/public/**/*.js').map(function (file) {
     const index = file.indexOf('/react');
 
     const dir　= file.slice(index + 1);
     const dir_path = dir.split("/").reverse().slice(1).reverse().join("/");
+    const react_path = dir_path.replace('/public', '');
 
-    mix.js(file, public_path + '/' + dir_path).react().version();
+    mix.js(file, public_path + '/' + react_path).react().version();
 });

@@ -2,7 +2,6 @@
     &__btn {
         display: inline-block;
         font-weight: 400;
-        cursor: pointer;
         text-align: center;
         vertical-align: middle;
         user-select: none;
@@ -12,6 +11,7 @@
         line-height: 1.6;
         border-radius: 0.25rem;
         transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        outline: none !important;
 
         &--title {
             font-size: 16px;
@@ -37,8 +37,8 @@
         overflow: hidden auto;
         position: absolute;
         transform: translate3d(0px, 39px, 0px);
-        top: 0;
-        left: 0.75rem;
+        top: 36px;
+        left: 0;
         width: 40vw;
         border: 1px solid rgba(0, 0, 0, 0.15);
         border-radius: 0.25rem;
@@ -49,6 +49,7 @@
         list-style: none;
         background-color: #fff;
         background-clip: padding-box;
+        z-index: 999;
 
         &--input-box {
             margin: 5px;
