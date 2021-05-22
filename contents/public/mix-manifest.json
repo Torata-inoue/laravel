@@ -1,6 +1,9 @@
 {
-    "/css/_base.css": "/css/_base.css",
-    "/css/app.css": "/css/app.css",
-    "/css/style.css": "/css/style.css",
-    "/css/test/test.css": "/css/test/test.css"
+    "/js/common/common.js": "/js/common/common.js?id=8da8d8efc9fe44e39f8a",
+    "/js/test/app.js": "/js/test/app.js?id=767a5f6beceab1549234",
+    "/js/test/test.js": "/js/test/test.js?id=1b78dcfe500c88d0d3c2",
+    "/react/activity-chart/index.js": "/react/activity-chart/index.js?id=54e0933028b0b9198359",
+    "/css/test/test.css": "/css/test/test.css?id=50628c0e4b6d99dc02f0",
+    "/css/style.css": "/css/style.css?id=b48c51a0c0b791844c80",
+    "/css/app.css": "/css/app.css?id=68b329da9893e34099c7"
 }

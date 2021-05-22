@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use Illuminate\Routing\Router;
+
+/** @var $router Router */
+$router->group(['namespace' => 'React', 'prefix' => 'react'], function (Router $router) {
+    $router->get('chart', 'ChartTestController@show');
 });

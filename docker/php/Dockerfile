@@ -21,6 +21,19 @@ RUN apt-get update && \
   docker-php-ext-configure gd --with-freetype --with-jpeg && \
   docker-php-ext-install intl gd pdo_mysql zip bcmath
 
+# nodeインストール
+RUN apt-get -y update
+RUN apt-get install -y \
+    curl \
+    gnupg
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install npm@6.14 -g
+RUN npm install yarn -g
+
+RUN echo "alias ll='ls -l'" >> /root/.bashrc
+RUN echo "alias ls='ls --color'" >> /root/.bashrc
+
 COPY ./php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /home
