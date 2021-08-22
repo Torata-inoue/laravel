@@ -67,6 +67,7 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
             $router->group(['namespace' => 'User', 'prefix' => 'user'], function (Router $router) {
                 $router->get('/', 'GetController@getUsers');
                 $router->get('{user_id}', 'GetController@findUser');
+                $router->get('auth', 'GetController@findAuth');
 
                 $router->put('{user_id}', 'PutController@editUser');
             });

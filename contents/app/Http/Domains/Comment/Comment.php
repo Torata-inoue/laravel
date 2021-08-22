@@ -2,9 +2,11 @@
 
 namespace App\Http\Domains\Comment;
 
+use App\Http\Domains\Nominee\Nominee;
 use App\Http\Domains\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comment extends Model
 {
@@ -23,5 +25,13 @@ class Comment extends Model
     public function User(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function Nominee(): HasMany
+    {
+        return $this->hasMany(Nominee::class);
     }
 }
