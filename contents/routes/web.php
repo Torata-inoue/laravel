@@ -18,7 +18,7 @@ $router->group(['namespace' => 'React', 'prefix' => 'react'], function (Router $
     $router->get('chart', 'ChartTestController@show');
 });
 
-$router->group(['namespace' => 'API', 'prefix' => 'api'], function (Router $router) {
+$router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' => 'api'], function (Router $router) {
     $router->group(['namespace' => 'Redux'], function (Router $router) {
         $router->group(['prefix' => 'v1'], function (Router $router) {
 
