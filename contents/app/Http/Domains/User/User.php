@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Http\Domains\User;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Domains\Rank\Rank;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -10,14 +11,18 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const PERMISSION_USER = 1;
+    const PERMISSION_ADMIN = 2;
+
+    const STATUS_DELETED = 0;
+    const STATUS_EXIST = 1;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -29,11 +34,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * @return BelongsTo
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function Rank(): BelongsTo
+    {
+        return $this->belongsTo(Rank::class, 'rank');
+    }
 }
