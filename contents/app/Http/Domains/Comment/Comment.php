@@ -30,7 +30,7 @@ class Comment extends Model
     /**
      * @return HasMany
      */
-    public function Nominee(): HasMany
+    public function Nominees(): HasMany
     {
         return $this->hasMany(Nominee::class);
     }

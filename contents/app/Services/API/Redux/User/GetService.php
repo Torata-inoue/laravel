@@ -21,7 +21,7 @@ class GetService extends BaseService
         UserRepository $userRepository
     )
     {
-        parent::__construct();
+        parent::__construct($userRepository);
         $this->userRepository = $userRepository;
     }
 

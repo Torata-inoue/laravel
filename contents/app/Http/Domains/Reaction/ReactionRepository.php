@@ -31,4 +31,13 @@ class ReactionRepository extends BaseRepository
             ->where('comment_id', '=', $comment_id)
             ->count();
     }
+
+    /**
+     * @param Reaction $reaction
+     * @return bool
+     */
+    public function save(Reaction $reaction): bool
+    {
+        return $reaction->save();
+    }
 }

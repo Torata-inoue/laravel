@@ -52,7 +52,7 @@ class GetService
                 'text' => $comment->text
             ],
             'user' => $comment->User,
-            'nominees' => $comment->Nominee->User,
+            'nominees' => $comment->Nominees->User,
             'reaction_count' => $this->reactionRepository->countReactionByCommentId($comment->id),
 //            'replies' => []
         ];

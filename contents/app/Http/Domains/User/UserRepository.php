@@ -46,4 +46,12 @@ class UserRepository extends BaseRepository
             ->find($user_id);
     }
 
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function save(User $user)
+    {
+        return $user->save();
+    }
 }

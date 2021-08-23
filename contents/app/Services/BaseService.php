@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Domains\User\UserRepository;
 
 class BaseService
 {
@@ -11,8 +11,8 @@ class BaseService
     /**
      * BaseService constructor.
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
-        $this->auth = Auth::user();
+        $this->auth = $userRepository->findUser(1);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Domains\Comment\Comment;
 use App\Http\Domains\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Nominee extends Model
 {
@@ -16,11 +17,11 @@ class Nominee extends Model
     protected $with = ['User', 'Comment'];
 
     /**
-     * @return BelongsTo
+     * @return HasOne
      */
-    public function User(): BelongsTo
+    public function User(): HasOne
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasOne(User::class, 'user_id');
     }
 
     /**
