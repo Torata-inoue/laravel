@@ -31,7 +31,12 @@ class GetService extends BaseService
     public function getUsers(): array
     {
         return $this->userRepository->getUsers()
-            ->map([$this, 'setUserDetail'])
+            ->map(function (User $user) {
+                $rank = $user->Rank->name;
+                $user = $user->getAttributes();
+                $user['rank'] = $rank;
+                return $user;
+            })
             ->all();
     }
 

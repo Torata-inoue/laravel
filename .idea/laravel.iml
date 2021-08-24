@@ -105,6 +105,8 @@
       <excludeFolder url="file://$MODULE_DIR$/contents/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/contents/vendor/phpdocumentor/type-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/contents/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/contents/vendor/barryvdh/laravel-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/contents/vendor/asm89/stack-cors" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

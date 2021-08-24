@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Redux\Comment;
 use App\Http\Requests\Comment\PostRequest;
 use App\Services\API\Redux\Comment\PostService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class PostController
 {
@@ -13,10 +14,11 @@ class PostController
      * @param PostService $service
      * @return JsonResponse
      */
-    public function postComment(PostRequest $request, PostService $service): JsonResponse
+    public function postComment(Request $request, PostService $service): JsonResponse
     {
-        list($user_id, $text, $nominees) = $request->only(['user_id', 'text', 'nominees']);
-        $service->postComment($user_id, $text, $nominees);
+        $text = $request->input('comment');
+        $nominees = $request->input('nominees');
+        $service->postComment($text, $nominees);
 
         return new JsonResponse();
     }

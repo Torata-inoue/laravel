@@ -13,6 +13,6 @@ class BaseService
      */
     public function __construct(UserRepository $userRepository)
     {
-        $this->auth = $userRepository->findUser(1);
+        $this->auth = $userRepository->findUser(8);
     }
 }

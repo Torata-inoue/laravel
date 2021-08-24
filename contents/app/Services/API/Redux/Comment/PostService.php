@@ -7,9 +7,10 @@ use App\Http\Domains\Comment\CommentRepository;
 use App\Http\Domains\Nominee\NomineeRepository;
 use App\Http\Domains\Reaction\ReactionRepository;
 use App\Http\Domains\User\UserRepository;
+use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 
-class PostService
+class PostService extends BaseService
 {
     /**
      * @var CommentRepository
@@ -45,6 +46,7 @@ class PostService
         ReactionRepository $reactionRepository
     )
     {
+        parent::__construct($userRepository);
         $this->commentRepository = $commentRepository;
         $this->userRepository = $userRepository;
         $this->nomineeRepository = $nomineeRepository;
@@ -52,25 +54,24 @@ class PostService
     }
 
     /**
-     * @param int $user_id
      * @param string $text
      * @param array $nominees
      */
-    public function postComment(int $user_id, string $text, array $nominees)
+    public function postComment(string $text, array $nominees)
     {
-        if ($this->userRepository->findUser($user_id)) {
+        if (!$this->userRepository->findUser($nominees[0])) {
             throw new \UnexpectedValueException('対象のユーザーは存在しません');
         }
 
         $comment = new Comment([
-            'user_id' => $user_id,
+            'user_id' => $this->auth->id,
             'text' => $text
         ]);
 
-        DB::transaction(function () use ($comment, $nominees, $user_id) {
+        DB::transaction(function () use ($comment, $nominees) {
             $this->commentRepository->save($comment);
             $this->insertNominees($comment->id, $nominees);
-            $this->insertReaction($comment->id, $user_id, $nominees);
+            $this->insertReaction($comment->id, $nominees);
         });
     }
 
@@ -91,16 +92,16 @@ class PostService
 
     /**
      * @param int $comment_id
-     * @param int $user_id
      * @param array $nominees
      */
-    private function insertReaction(int $comment_id, int $user_id, array $nominees)
+    private function insertReaction(int $comment_id, array $nominees)
     {
-        $data = array_map(function ($nominee) use ($comment_id, $user_id) {
+        $data = array_map(function ($nominee) use ($comment_id) {
             return [
-                'user_id' => $user_id,
+                'user_id' => $this->auth->id,
                 'comment_id' => $comment_id,
-                'target_id' => $nominee
+                'target_id' => $nominee,
+                'created_at' => now()
             ];
         }, $nominees);
         $this->reactionRepository->bulkInsert($data);

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Comment extends Model
 {
     const STATUS_DELETED = 0;
-    const STATUS_EXIST = 0;
+    const STATUS_EXIST = 1;
 
     const NOT_REPLY_COMMENT = 0;
 

@@ -27,6 +27,9 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
                 $router->get('/', 'GetController@getComments');
                 $router->get('{comment_id}', 'GetController@findComment');
 
+                $router->options('/', function () {
+                    return response()->json();
+                });
                 $router->post('/', 'PostController@postComment');
             });
 
