@@ -2,6 +2,7 @@
 
 namespace App\Services\API\Redux\User;
 
+use App\Http\Domains\PointHistory\PointHistoryRepository;
 use App\Http\Domains\User\User;
 use App\Http\Domains\User\UserRepository;
 use App\Services\BaseService;
@@ -13,16 +14,21 @@ class GetService extends BaseService
      */
     private $userRepository;
 
+    private $pointHistoryRepository;
+
     /**
      * GetService constructor.
      * @param UserRepository $userRepository
+     * @param PointHistoryRepository $pointHistoryRepository
      */
     public function __construct(
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        PointHistoryRepository $pointHistoryRepository
     )
     {
         parent::__construct($userRepository);
         $this->userRepository = $userRepository;
+        $this->pointHistoryRepository = $pointHistoryRepository;
     }
 
     /**
@@ -67,6 +73,7 @@ class GetService extends BaseService
         $rank = $user->Rank->name;
         $user = $user->getAttributes();
         $user['rank'] = $rank;
+        $user['point'] = $this->pointHistoryRepository->sumPoints($user['id']);
         return $user;
     }
 }

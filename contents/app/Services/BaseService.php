@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Http\Domains\User\UserRepository;
 
-class BaseService
+abstract class BaseService
 {
     protected $auth;
 
