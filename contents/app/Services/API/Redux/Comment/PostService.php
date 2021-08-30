@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 
 class PostService extends BaseService
 {
+    use CommentTrait;
+
     /**
      * @var CommentRepository
      */
@@ -56,6 +58,7 @@ class PostService extends BaseService
     /**
      * @param string $text
      * @param array $nominees
+     * @return array
      */
     public function postComment(string $text, array $nominees)
     {
@@ -73,6 +76,8 @@ class PostService extends BaseService
             $this->insertNominees($comment->id, $nominees);
             $this->insertReaction($comment->id, $nominees);
         });
+
+        return $this->setCommentDetail($comment);
     }
 
     /**
@@ -105,5 +110,13 @@ class PostService extends BaseService
             ];
         }, $nominees);
         $this->reactionRepository->bulkInsert($data);
+    }
+
+    /**
+     * @return ReactionRepository
+     */
+    public function getReactionRepository(): ReactionRepository
+    {
+        return $this->reactionRepository;
     }
 }

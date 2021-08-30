@@ -20,6 +20,7 @@ class CommentRepository extends BaseRepository
         return $this->getQueryBuilder()
             ->where('reply_to', '=', Comment::NOT_REPLY_COMMENT)
             ->where('status', '=', Comment::STATUS_EXIST)
+            ->orderBy('id', 'desc')
             ->get();
     }
 

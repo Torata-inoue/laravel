@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Redux\Comment;
 
 use App\Http\Controllers\Controller;
+use App\Services\API\Redux\Comment\GetService;
 use Illuminate\Http\JsonResponse;
 
 class GetController extends Controller
@@ -10,9 +11,9 @@ class GetController extends Controller
     /**
      * @return JsonResponse
      */
-    public function getComments(): JsonResponse
+    public function getComments(GetService $service): JsonResponse
     {
-        return new JsonResponse(['getOk']);
+        return new JsonResponse($service->getComments());
     }
 
     public function findComment()

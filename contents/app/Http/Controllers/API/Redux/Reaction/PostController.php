@@ -16,7 +16,8 @@ class PostController extends Controller
      */
     public function postReaction(PostRequest $request, PostService $service)
     {
-        list($comment_id, $target_id) = $request->only(['comment_id', 'target_id']);
+        $comment_id = $request->input('comment_id');
+        $target_id = $request->input('target_id');
         $service->postReaction($comment_id, $target_id);
 
         return new JsonResponse();

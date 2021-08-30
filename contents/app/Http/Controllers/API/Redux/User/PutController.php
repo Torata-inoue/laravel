@@ -21,4 +21,10 @@ class PutController extends Controller
 
         return new JsonResponse();
     }
+
+    public function recoverStamina(PutService $service)
+    {
+        $auth = $service->recoverStamina();
+        return new JsonResponse($auth);
+    }
 }

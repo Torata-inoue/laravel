@@ -4,10 +4,14 @@ namespace App\Services\API\Redux\Comment;
 
 use App\Http\Domains\Comment\Comment;
 use App\Http\Domains\Comment\CommentRepository;
+use App\Http\Domains\Nominee\Nominee;
 use App\Http\Domains\Reaction\ReactionRepository;
+use App\Http\Domains\User\User;
 
 class GetService
 {
+    use CommentTrait;
+
     /**
      * @var CommentRepository
      */
@@ -38,23 +42,16 @@ class GetService
     public function getComments(): array
     {
         $comments = $this->commentRepository->getComments();
-        return $comments->map([$this, 'setCommentDetail'])->all();
+        return $comments->map(function ($comment) {
+            return $this->setCommentDetail($comment);
+        })->all();
     }
 
     /**
-     * @param Comment $comment
-     * @return array
+     * @return ReactionRepository
      */
-    private function setCommentDetail(Comment $comment): array
+    public function getReactionRepository(): ReactionRepository
     {
-        return [
-            'comment' => [
-                'text' => $comment->text
-            ],
-            'user' => $comment->User,
-            'nominees' => $comment->Nominees->User,
-            'reaction_count' => $this->reactionRepository->countReactionByCommentId($comment->id),
-//            'replies' => []
-        ];
+        return $this->reactionRepository;
     }
 }

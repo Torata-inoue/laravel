@@ -6,7 +6,7 @@ use App\Http\Domains\BaseRepository;
 
 class PointHistoryRepository extends BaseRepository
 {
-    public function __construct(PointHistoryRepository $model)
+    public function __construct(PointHistory $model)
     {
         parent::__construct($model);
     }
@@ -19,7 +19,7 @@ class PointHistoryRepository extends BaseRepository
     {
         return $this->getQueryBuilder()
             ->where('user_id', '=', $user_id)
-            ->where('status', '=', PointHistory::TYPE_PROFITS)
+            ->where('type', '=', PointHistory::TYPE_PROFITS)
             ->sum('points');
     }
 

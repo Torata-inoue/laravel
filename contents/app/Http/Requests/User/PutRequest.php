@@ -20,7 +20,6 @@ class PutRequest extends FormRequest
             'name' => 'string',
             'email' => 'string',
             'comment' => 'string',
-            'stamina' => 'int',
         ];
     }
 }

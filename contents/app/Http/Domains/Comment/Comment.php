@@ -32,6 +32,6 @@ class Comment extends Model
      */
     public function Nominees(): HasMany
     {
-        return $this->hasMany(Nominee::class);
+        return $this->hasMany(Nominee::class, 'comment_id');
     }
 }

@@ -24,9 +24,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'text' => 'required|string|max:10000',
+            'comment' => 'required|string|max:10000',
             'nominees' => 'required|array|min:1|max:10',
-            'nominees.*.user_id' => 'required|int',
         ];
     }
 }

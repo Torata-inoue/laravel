@@ -9,6 +9,8 @@ use App\Services\BaseService;
 
 class GetService extends BaseService
 {
+    use UserTrait;
+
     /**
      * @var UserRepository
      */
@@ -65,15 +67,10 @@ class GetService extends BaseService
     }
 
     /**
-     * @param User $user
-     * @return array
+     * @return PointHistoryRepository
      */
-    private function setUserDetail(User $user): array
+    protected function getPointHistoryRepository(): PointHistoryRepository
     {
-        $rank = $user->Rank->name;
-        $user = $user->getAttributes();
-        $user['rank'] = $rank;
-        $user['point'] = $this->pointHistoryRepository->sumPoints($user['id']);
-        return $user;
+        return $this->pointHistoryRepository;
     }
 }

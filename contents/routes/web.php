@@ -27,7 +27,7 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
                 $router->get('/', 'GetController@getComments');
                 $router->get('{comment_id}', 'GetController@findComment');
 
-                cors('/', $router);
+                cors($router);
                 $router->post('/', 'PostController@postComment');
             });
 
@@ -61,22 +61,31 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
             $router->group(['namespace' => 'Reaction', 'prefix' => 'reaction'], function (Router $router) {
                 $router->get('/', 'GetController@getReactions');
 
+                cors($router);
                 $router->post('/', 'PostController@postReaction');
             });
 
             // Users router
             $router->group(['namespace' => 'User', 'prefix' => 'user'], function (Router $router) {
                 $router->get('/', 'GetController@getUsers');
-                $router->get('{user_id}', 'GetController@findUser');
                 $router->get('auth', 'GetController@findAuth');
+                $router->get('{user_id}', 'GetController@findUser');
 
+                cors($router, 'stamina');
+                $router->put('stamina', 'PutController@recoverStamina');
+                cors($router, '{user_id}');
                 $router->put('{user_id}', 'PutController@editUser');
             });
         });
     });
 });
 
-function cors($route, $router)
+/**
+ * @param Router $router
+ * @param string $route
+ * @return \Illuminate\Routing\Route
+ */
+function cors(Router $router, string $route = '/')
 {
     return $router->options($route, function () {
         return response()->json();
