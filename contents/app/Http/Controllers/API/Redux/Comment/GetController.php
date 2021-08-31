@@ -11,9 +11,9 @@ class GetController extends Controller
     /**
      * @return JsonResponse
      */
-    public function getComments(GetService $service): JsonResponse
+    public function getComments(GetService $service, $page): JsonResponse
     {
-        return new JsonResponse($service->getComments());
+        return new JsonResponse($service->getComments($page));
     }
 
     public function findComment()

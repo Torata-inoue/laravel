@@ -18,8 +18,8 @@ class PostController extends Controller
     {
         $comment_id = $request->input('comment_id');
         $target_id = $request->input('target_id');
-        $service->postReaction($comment_id, $target_id);
+        $comment = $service->postReaction($comment_id, $target_id);
 
-        return new JsonResponse();
+        return new JsonResponse($comment);
     }
 }

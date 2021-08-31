@@ -12,6 +12,8 @@ class GetService
 {
     use CommentTrait;
 
+    const LIMIT = 5;
+
     /**
      * @var CommentRepository
      */
@@ -37,11 +39,13 @@ class GetService
     }
 
     /**
+     * @param int $page
      * @return array
      */
-    public function getComments(): array
+    public function getComments(int $page): array
     {
-        $comments = $this->commentRepository->getComments();
+        $offset = $page === 1 ? 0 : $page * self::LIMIT - 1;
+        $comments = $this->commentRepository->getComments($offset, self::LIMIT);
         return $comments->map(function ($comment) {
             return $this->setCommentDetail($comment);
         })->all();

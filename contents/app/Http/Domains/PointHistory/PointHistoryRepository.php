@@ -19,7 +19,6 @@ class PointHistoryRepository extends BaseRepository
     {
         return $this->getQueryBuilder()
             ->where('user_id', '=', $user_id)
-            ->where('type', '=', PointHistory::TYPE_PROFITS)
             ->sum('points');
     }
 

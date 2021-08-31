@@ -24,7 +24,7 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
 
             // Comment router
             $router->group(['namespace' => 'Comment', 'prefix' => 'comment'], function (Router $router) {
-                $router->get('/', 'GetController@getComments');
+                $router->get('{page}', 'GetController@getComments');
                 $router->get('{comment_id}', 'GetController@findComment');
 
                 cors($router);

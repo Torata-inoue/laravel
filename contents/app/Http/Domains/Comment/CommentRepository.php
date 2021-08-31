@@ -13,13 +13,27 @@ class CommentRepository extends BaseRepository
     }
 
     /**
-     * @return Collection
+     * @param int $comment_id
+     * @return Comment
      */
-    public function getComments(): Collection
+    public function findById(int $comment_id): Comment
+    {
+        return $this->getQueryBuilder()
+            ->find($comment_id);
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     * @return \Illuminate\Database\Eloquent\Builder[]|Collection
+     */
+    public function getComments(int $offset, int $limit)
     {
         return $this->getQueryBuilder()
             ->where('reply_to', '=', Comment::NOT_REPLY_COMMENT)
             ->where('status', '=', Comment::STATUS_EXIST)
+            ->offset($offset)
+            ->limit($limit)
             ->orderBy('id', 'desc')
             ->get();
     }
