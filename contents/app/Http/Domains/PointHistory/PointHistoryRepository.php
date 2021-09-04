@@ -3,12 +3,21 @@
 namespace App\Http\Domains\PointHistory;
 
 use App\Http\Domains\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class PointHistoryRepository extends BaseRepository
 {
     public function __construct(PointHistory $model)
     {
         parent::__construct($model);
+    }
+
+    public function getHistories(int $user_id): Collection
+    {
+        return $this->getQueryBuilder()
+            ->where('user_id', '=', $user_id)
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     /**

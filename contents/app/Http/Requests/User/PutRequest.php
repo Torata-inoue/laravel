@@ -17,9 +17,8 @@ class PutRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string',
-            'email' => 'string',
-            'comment' => 'string',
+            'name' => 'required|string',
+            'comment' => 'required|string',
         ];
     }
 }

@@ -28,6 +28,7 @@ class PrizeRepository extends BaseRepository
     public function getPrizes(): Collection
     {
         return $this->getQueryBuilder()
+            ->where('id', '!=', 4)  // スタミナ
             ->where('status', '=', Prize::STATUS_EXIST)
             ->get();
     }

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API\Redux\PrizeExchangeHistory;
+namespace App\Http\Controllers\API\Redux\PointHistory;
 
 use App\Http\Controllers\Controller;
-use App\Services\API\Redux\PrizeExchangeHistory\GetService;
+use App\Services\API\Redux\PointHistory\GetService;
 use Illuminate\Http\JsonResponse;
 
 class GetController extends Controller
 {
-    public function getPrizeExchangeHistories(GetService $service)
+    public function getPointHistories(GetService $service)
     {
         return new JsonResponse($service->getHistories());
     }

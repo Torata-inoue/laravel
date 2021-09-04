@@ -28,4 +28,27 @@ class PointHistory extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        switch ($this->type) {
+            case self::TYPE_PRIZE_EXCHANGE :
+                return '景品交換';
+
+            case self::TYPE_STAMINA_EXCHANGE :
+                return 'スタミナ交換';
+
+            case self::TYPE_RANK_POINT :
+                return 'ランクポイント';
+
+            case self::TYPE_LOGIN_BONUS :
+                return 'ログインボーナス';
+
+            default :
+                return '通常ポイント';
+        }
+    }
 }

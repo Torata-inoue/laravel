@@ -30,22 +30,22 @@ class GetService extends BaseService
 
     /**
      * @param int|null $user_id
-     * @return Collection
+     * @return array
      */
-    public function getReceiveReactions(int $user_id = null): Collection
+    public function getReceiveReactions(int $user_id = null): array
     {
         $reactions = $this->reactionRepository->getReactions($user_id, $this->auth->id);
-        return $this->setDetail($reactions);
+        return $this->setDetail($reactions)->all();
     }
 
     /**
      * @param int|null $target_id
-     * @return Collection
+     * @return array
      */
-    public function getSendReactions(int $target_id = null): Collection
+    public function getSendReactions(int $target_id = null): array
     {
         $reactions = $this->reactionRepository->getReactions($this->auth->id, $target_id);
-        return $this->setDetail($reactions);
+        return $this->setDetail($reactions)->all();
     }
 
     private function setDetail(Collection $reactions)
@@ -60,9 +60,8 @@ class GetService extends BaseService
                     'name' => $reaction->Target->name,
                     'icon_path' => $reaction->Target->icon_path
                 ],
-                'comment' => [
-                    'text' => $reaction->Comment->text
-                ]
+                'comment' => $reaction->Comment->text,
+                'created_at' => $reaction->created_at->format('Y年m月d日')
             ];
         });
     }

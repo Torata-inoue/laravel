@@ -18,6 +18,23 @@ class PrizeExchangeHistory extends Model
     protected $with = ['User', 'Prize'];
 
     /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        switch ($this->status) {
+            case self::STATUS_EXCHANGED :
+                return '交換済み';
+
+            case self::STATUS_REJECTED :
+                return '交換拒否';
+
+            default :
+                return '申請中';
+        }
+    }
+
+    /**
      * @return BelongsTo
      */
     public function User(): BelongsTo

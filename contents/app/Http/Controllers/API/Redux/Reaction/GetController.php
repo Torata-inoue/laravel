@@ -11,8 +11,8 @@ class GetController extends Controller
     public function getReactions(GetService $service)
     {
         $data = [
-            'receive' => $service->getReceiveReactions()->all(),
-            'send' => $service->getSendReactions()->all()
+            'receive' => $service->getReceiveReactions(),
+            'send' => $service->getSendReactions()
         ];
         return new JsonResponse($data);
     }

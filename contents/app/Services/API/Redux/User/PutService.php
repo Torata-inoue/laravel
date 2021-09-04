@@ -38,11 +38,13 @@ class PutService extends BaseService
 
     /**
      * @param array $data
+     * @return array
      */
     public function editUser(array $data)
     {
         $this->auth->fill($data);
         $this->userRepository->save($this->auth);
+        return $this->setUserDetail($this->auth);
     }
 
     /**

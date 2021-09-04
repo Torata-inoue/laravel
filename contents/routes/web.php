@@ -54,6 +54,7 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
             $router->group(['namespace' => 'PrizeExchangeHistory', 'prefix' => 'prizeExchangeHistory'], function (Router $router) {
                 $router->get('/', 'GetController@getPrizeExchangeHistories');
 
+                cors($router);
                 $router->post('/', 'PostController@postPrizeExchangeHistory');
             });
 
@@ -73,8 +74,8 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
 
                 cors($router, 'stamina');
                 $router->put('stamina', 'PutController@recoverStamina');
-                cors($router, '{user_id}');
-                $router->put('{user_id}', 'PutController@editUser');
+                cors($router, 'auth');
+                $router->put('auth', 'PutController@editUser');
             });
         });
     });

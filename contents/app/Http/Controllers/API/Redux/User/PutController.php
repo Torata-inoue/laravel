@@ -17,9 +17,8 @@ class PutController extends Controller
     public function editUser(PutRequest $request, PutService $service)
     {
         $data = $request->input();
-        $service->editUser($data);
 
-        return new JsonResponse();
+        return new JsonResponse($service->editUser($data));
     }
 
     public function recoverStamina(PutService $service)

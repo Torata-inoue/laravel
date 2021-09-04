@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Redux\PointHisotry;
+namespace App\Http\Controllers\API\Redux\PointHistory;
 
 use App\Http\Controllers\Controller;
 
