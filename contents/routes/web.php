@@ -77,6 +77,12 @@ $router->group(['middleware' => ['api', 'cors'], 'namespace' => 'API', 'prefix' 
                 cors($router, 'auth');
                 $router->put('auth', 'PutController@editUser');
             });
+
+            // Image router
+            $router->group(['namespace' => 'Image', 'prefix' => 'image'], function (Router $router) {
+                cors($router, 'user');
+                $router->post('user', 'StoreController@storeUser');
+            });
         });
     });
 });

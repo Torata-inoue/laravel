@@ -17,10 +17,14 @@ trait UserTrait
      */
     protected function setUserDetail(User $user): array
     {
-        $rank = $user->Rank->name;
-        $user = $user->getAttributes();
-        $user['rank'] = $rank;
-        $user['point'] = $this->getPointHistoryRepository()->sumPoints($user['id']);
-        return $user;
+        return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'rank' => $user->Rank->name,
+            'point' => $this->getPointHistoryRepository()->sumPoints($user['id']),
+            'stamina' => $user->stamina,
+            'comment' => $user->comment,
+            'icon_path' => $user->getImagePath()
+        ];
     }
 }

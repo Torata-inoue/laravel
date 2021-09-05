@@ -34,6 +34,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * @return string
+     */
+    public function getImagePath(): string
+    {
+        return url("/storage/uploads/user/{$this->icon_path}", null);
+    }
+
+    /**
      * @return BelongsTo
      */
     public function Rank(): BelongsTo

@@ -19,6 +19,7 @@ class PutRequest extends FormRequest
         return [
             'name' => 'required|string',
             'comment' => 'required|string',
+            'icon_path' => 'string',
         ];
     }
 }
