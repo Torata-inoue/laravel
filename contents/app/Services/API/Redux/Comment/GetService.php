@@ -44,7 +44,7 @@ class GetService
      */
     public function getComments(int $page): array
     {
-        $offset = $page === 1 ? 0 : $page * self::LIMIT - 1;
+        $offset = $page === 1 ? 0 : ($page - 1) * self::LIMIT - 1;
         $comments = $this->commentRepository->getComments($offset, self::LIMIT);
         return $comments->map(function ($comment) {
             return $this->setCommentDetail($comment);
