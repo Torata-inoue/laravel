@@ -52,10 +52,6 @@ class GetService extends BaseService
     {
         return $reactions->map(function ($reaction) {
             return [
-                'user' => [
-                    'name' => $reaction->User->name,
-                    'icon_path' => $reaction->User->icon_path
-                ],
                 'target' => [
                     'name' => $reaction->Target->name,
                     'icon_path' => $reaction->Target->icon_path

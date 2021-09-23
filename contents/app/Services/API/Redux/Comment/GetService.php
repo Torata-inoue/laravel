@@ -5,6 +5,7 @@ namespace App\Services\API\Redux\Comment;
 use App\Http\Domains\Comment\Comment;
 use App\Http\Domains\Comment\CommentRepository;
 use App\Http\Domains\Nominee\Nominee;
+use App\Http\Domains\PointHistory\PointHistoryRepository;
 use App\Http\Domains\Reaction\ReactionRepository;
 use App\Http\Domains\User\User;
 
@@ -24,18 +25,23 @@ class GetService
      */
     private $reactionRepository;
 
+    private $pointHistoryRepository;
+
     /**
      * GetService constructor.
      * @param CommentRepository $commentRepository
      * @param ReactionRepository $reactionRepository
+     * @param PointHistoryRepository $pointHistoryRepository
      */
     public function __construct(
         CommentRepository $commentRepository,
-        ReactionRepository $reactionRepository
+        ReactionRepository $reactionRepository,
+        PointHistoryRepository $pointHistoryRepository
     )
     {
         $this->commentRepository = $commentRepository;
         $this->reactionRepository = $reactionRepository;
+        $this->pointHistoryRepository = $pointHistoryRepository;
     }
 
     /**
@@ -57,5 +63,10 @@ class GetService
     public function getReactionRepository(): ReactionRepository
     {
         return $this->reactionRepository;
+    }
+
+    public function getPointHistoryRepository(): PointHistoryRepository
+    {
+        return $this->pointHistoryRepository;
     }
 }
